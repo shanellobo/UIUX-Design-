@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1> To-Do List </h1>
+    <input type="text" id="tinput" placeholder="Enter a task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="tlist"></ul>
+    <script>
+
+        function addTask(){
+            let task = document.getElementById("tinput").value;
+            if (task == ""){
+                alert("Please Enter a task ");
+                return;
+            }
+
+            let li = document.createElement("li");
+            let taskText = document.createElement("span");
+            taskText.textContent = task;
+            let editButton = document.createElement("button");
+            editButton.textContent = "edit";
+            editButton.onclick = function(){
+                editTask(taskText);
+            };
+            let deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.onclick = function(){
+                deleteTask(li);
+            };
+            li.appendChild(taskText);
+            li.appendChild(editButton);
+            li.appendChild(deleteButton);
+            document.getElementById("tlist").appendChild(li);
+            document.getElementById("tinput").value = "";
+        }
+
+        function editTask(taskText) {
+            let newTask = prompt("Edit task:", taskText.textContent);
+            
+            if (newTask !== null && newTask.trim() !== ""){
+                taskText.textContent = newTask;
+            }
+        }
+
+        function deleteTask(li){
+            li.remove();
+        }
+
+
+    </script>
+    
+</body>
+</html>
