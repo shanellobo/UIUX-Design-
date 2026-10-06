@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> #image 
+    { width: 500px;
+     height: 300px; 
+     object-fit: cover; 
+    }
+    </style>
+</head>
+<body>
+    <h2> Image slider</h2>
+    <img id="image" src="images1.png">
+    <br><br>
+    <button onclick="previous()"> Previous</button>
+    <button onclick="next()"> next</button>
+    <script>
+        let images=["images1.png","image2.jpg","image3.png","image4.png"];
+        let i=0;
+        function next()
+        {
+            i++;
+            if(i==images.length){
+                i=0;
+            }
+            document.getElementById("image").src=images[i];
+        }
+        function previous(){
+            i--;
+            if(i<0){
+                i=images.length-1;
+            }
+             document.getElementById("image").src=images[i];
+        }
+        setInterval(next,3000);
+    </script>
+</body>
+</html>
